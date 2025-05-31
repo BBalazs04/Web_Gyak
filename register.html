@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Regisztráció</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="left">
+            <a href="register.html" class="btn">Regisztráció</a>
+            <a href="login.html" class="btn">Bejelentkezés</a>
+        </div>
+        
+        <div class="right">
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <ul>
+                    <li><a href="index.php">Főoldal</a></li>
+                    <li><a href="posts.php">Bejegyzések</a></li>
+                    <li><a href="gallery.php">Galéria</a></li>
+                    <li><a href="about.php">Rólunk</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+        <h2>Regisztráció</h2>
+        <form action="register.php" method="post" class="auth-form">
+            <label for="username">Felhasználónév:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Jelszó:</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit" class="btn">Regisztráció</button>
+        </form>
+    </main>
+
+    <script>
+    function toggleMenu() {
+        const menu = document.getElementById("dropdownMenu");
+        menu.classList.toggle("open");
+        
+        document.addEventListener('click', function closeMenu(e) {
+            if (!e.target.closest('.right')) {
+                menu.classList.remove("open");
+                document.removeEventListener('click', closeMenu);
+            }
+        });
+    }
+    </script>
+</body>
+</html>
