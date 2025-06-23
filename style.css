@@ -116,22 +116,6 @@ body {
     float: left;
     margin-left: -30px;
 }
-@media (min-width: 769px) {
-    .menu-item-has-children:hover > .sub-menu {
-        display: block;
-    }
-}
-@media (max-width: 768px) {
-    .sub-menu {
-        right: auto;
-        left: 0;
-        border-radius: 0;
-    }
-    
-    .menu-item-has-children > a::after {
-        content: '▾';
-    }
-}
 .navbar {
     display: flex;
     justify-content: space-between;

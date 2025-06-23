@@ -5,7 +5,7 @@ session_start();
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title>Kezdőlap</title>
+    <title>Byrdcara</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -187,6 +187,13 @@ session_start();
         const menu = document.getElementById("dropdownMenu");
         menu.classList.toggle("open");
         
+        // Almenük bezárása főmenü nyitáskor
+        if (menu.classList.contains("open")) {
+            document.querySelectorAll('.sub-menu').forEach(submenu => {
+                submenu.style.display = 'none';
+            });
+        }
+        
         document.addEventListener('click', function closeMenu(e) {
             if (!e.target.closest('.right')) {
                 menu.classList.remove("open");
@@ -194,6 +201,30 @@ session_start();
             }
         });
     }
+
+    // Almenük kezelése
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.menu-item-has-children').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.querySelector('.sub-menu').style.display = 'block';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.querySelector('.sub-menu').style.display = 'none';
+                });
+            });
+        }
+        // Mobil nézetben kattintásra
+        else {
+            document.querySelectorAll('.menu-item-has-children > a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        }
+    });
     </script>
     <style>
         .kepek1 {

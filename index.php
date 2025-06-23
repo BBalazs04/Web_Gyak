@@ -7,6 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Kezdőlap</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <div id="content"></div>
@@ -20,9 +21,7 @@ session_start();
       kep1();
     });
   </script>
-</body>
 
-<body>
 <header class="navbar">
         <div class="left">
             <?php if (isset($_SESSION['username'])): ?>
@@ -121,10 +120,8 @@ session_start();
             <p>Aztán átalakult valami mássá. Ablakká, amelyben kitekintek a világra, a világ meg betekinthet a gondolataimba: késekről, every day carry felszerelésekről, és az ezek mögött meghúzódó filozófiáról.<br><br>Aztán ennél is több lett. Egy közösség, amelyben együtt, hasonló értékek mentén dolgozunk azért, hogy egy minőségi, kissé talán régimódi találkahely legyen ez az online térben.<br><br>Balogh József vagyok, és azon dolgozom, hogy ez a közösség egyre nagyobbá váljon, és együtt adhassuk tovább ezek az értékeket. Tarts velünk te is!</p>
         </div>
 
-        <div class="kep_1">
-            <img src="kepek/IMG_20180614_163340_1.jpg" height="450" width="350">
-        </div>
-
+        <img src="kepek/IMG_20180614_163340_1.jpg" class="kep_1">
+        
         <div class="bt_1">
             <button class="nav left" onclick="elozoKep()">&#10094;</button>
         </div>
@@ -201,9 +198,7 @@ function kep1() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/IMG_2549-980x626.jpeg" height="550" width="1000">
-    </div>
+    <img src="kepek/IMG_2549-980x626.jpeg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -225,9 +220,7 @@ function kep1() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/20250222_1659167002-980x677.jpg" height="550" width="1000">
-    </div>
+    <img src="kepek/20250222_1659167002-980x677.jpg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -249,9 +242,7 @@ function kep3() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/IMG_2100-980x703.jpeg" height="550" width="1000">
-    </div>
+    <img src="kepek/IMG_2100-980x703.jpeg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -273,9 +264,7 @@ function kep4() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/IMG_1892-980x653.jpeg" height="550" width="1000">
-    </div>
+    <img src="kepek/IMG_1892-980x653.jpeg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -297,9 +286,7 @@ function kep5() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="szin">
-        <img height="550" width="1000">
-    </div>
+    <img class="szin">
 
     <div class="szin_2"></div>
 
@@ -321,9 +308,7 @@ function kep6() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/IMG_1814.jpeg" height="550" width="1000">
-    </div>
+    <img src="kepek/IMG_1814.jpeg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -345,9 +330,7 @@ function kep7() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/Kep1.jpg" height="550" width="1000">
-    </div>
+    <img src="kepek/Kep1.jpg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -369,9 +352,7 @@ function kep8() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/20241221_1020060742-980x735.jpg" height="550" width="1000">
-    </div>
+    <img src="kepek/20241221_1020060742-980x735.jpg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -393,9 +374,7 @@ function kep9() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/IMG_2113-980x561.jpeg" height="550" width="1000">
-    </div>
+    <img src="kepek/IMG_2113-980x561.jpeg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -417,9 +396,7 @@ function kep10() {
   const container = document.getElementById('content');
 
   container.innerHTML = `
-    <div class="crauser">
-        <img src="kepek/Kep1-936x675.jpg" height="550" width="1000">
-    </div>
+    <img src="kepek/Kep1-936x675.jpg" class="crauser">
 
     <div class="szin_2"></div>
 
@@ -447,18 +424,24 @@ function kep10() {
             height: 100%;
             text-align: left;
         }
+
         .kep_1 {
             position: absolute;
             top: 140px;
             left: 63%;;
             text-align: left;
+            width: 450px;
+            height: 550px;
         }
+        
         .crauser {
             position: absolute;
             top: 700px;
             left: 12%;;
             text-align: left;
             z-index: 1;
+            width: 1000px;
+            height: 550px;
         }
         .crauser_2 {
             position: absolute;
@@ -475,7 +458,8 @@ function kep10() {
             top: 700px;
             left: 12%;;
             text-align: left;
-            max-height: 550px;
+            width: 1000px;
+            height: 550px;
         }
         .szin_2 {
             position: absolute;

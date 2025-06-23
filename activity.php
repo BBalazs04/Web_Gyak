@@ -168,20 +168,48 @@ try {
         <?php endif; ?>
     </div>
 
-    <script>
   function toggleMenu() {
-    const menu = document.getElementById('dropdownMenu');
-    menu.classList.toggle('open');
-  }
-
-  document.addEventListener('click', function(event) {
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const hamburger = document.querySelector('.hamburger');
-
-    if (!dropdownMenu.contains(event.target) && !hamburger.contains(event.target)) {
-      dropdownMenu.classList.remove('open');
+        const menu = document.getElementById("dropdownMenu");
+        menu.classList.toggle("open");
+        
+        // Almenük bezárása főmenü nyitáskor
+        if (menu.classList.contains("open")) {
+            document.querySelectorAll('.sub-menu').forEach(submenu => {
+                submenu.style.display = 'none';
+            });
+        }
+        
+        document.addEventListener('click', function closeMenu(e) {
+            if (!e.target.closest('.right')) {
+                menu.classList.remove("open");
+                document.removeEventListener('click', closeMenu);
+            }
+        });
     }
-  });
+
+    // Almenük kezelése
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth > 768) {
+            document.querySelectorAll('.menu-item-has-children').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.querySelector('.sub-menu').style.display = 'block';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.querySelector('.sub-menu').style.display = 'none';
+                });
+            });
+        }
+        // Mobil nézetben kattintásra
+        else {
+            document.querySelectorAll('.menu-item-has-children > a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        }
+    });
 </script>
 </body>
 </html>
